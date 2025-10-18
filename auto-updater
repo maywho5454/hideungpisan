@@ -1,0 +1,26 @@
+name: Auto Update 10 Repos
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # setiap jam
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install PyGithub requests
+
+      - name: Run updater
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+        run: python update_repos_example.py
