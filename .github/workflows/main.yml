@@ -3,7 +3,7 @@ name: hideungpisan.m3u
 on:
   # jalan otomatis tiap 1 jam (ingat: waktu GitHub = UTC)
   schedule:
-    - cron: "/10 * * * *"
+    - cron: "*/10 * * * *"
   # bisa dijalankan manual dari tab "Actions"
   workflow_dispatch:
   # opsional: jalan setiap ada perubahan pada script
