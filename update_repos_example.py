@@ -8,7 +8,7 @@ from github import Github
 GITHUB_TOKEN = os.getenv("GITHUB_PAT")
 
 # File sumber (tanpa footer)
-SOURCE_URL = "https://raw.githubusercontent.com/maywho5454/hideungpisan/main/hideungpisan.m3u"
+SOURCE_URL = "https://raw.githubusercontent.com/maywho5454/hideungpisan/refs/heads/main/hideungpisan.m3u"
 
 # Branch dan nama file target di tiap repo
 BRANCH = "main"
