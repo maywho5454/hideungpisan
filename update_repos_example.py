@@ -77,7 +77,7 @@ def main():
                 f"Auto update footer untuk {tanggal}",
                 final_content,
                 sha,
-                branch=BRANCH,
+                branch=main,
             )
             print("  ✅ Berhasil diperbarui.")
         except Exception as e:
@@ -88,7 +88,7 @@ def main():
                     TARGET_FILE,
                     f"Auto create dengan footer {tanggal}",
                     final_content,
-                    branch=BRANCH,
+                    branch=main,
                 )
                 print("  ✅ File baru berhasil dibuat.")
             except Exception as inner:
