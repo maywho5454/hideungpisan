@@ -1,98 +1,73 @@
-import os
-import re
-import requests
-from github import Github
+#EXTINF:-1 group-logo="https://i.imgur.com/aVBedkE.jpeg",🔰 MAGELIFE OFFICIAL
 
-# --- KONFIGURASI ---
-# Token dengan izin menulis ke 10 repo ini, disimpan di environment variable
-GITHUB_TOKEN = os.getenv("GITHUB_PAT")
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/aVBedkE.jpeg" group-title="🔰 CHAT ADMIN", CHAT ADMIN
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-# File sumber (tanpa footer)
-SOURCE_URL = "https://raw.githubusercontent.com/maywho5454/hideungpisan/refs/heads/main/hideungpisan.m3u"
+#EXTINF:-1 group-logo="https://i.imgur.com/XXQ2pQ3.jpeg", ✅ CEK EMAIL KAMU 
 
-# Branch dan nama file target di tiap repo
-BRANCH = "main"
-TARGET_FILE = "hideungpisan.m3u"
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/DUIDZUC.jpeg" group-title="✅ CEK EMAIL KAMU", Kalau ga ada chat admni
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-# 10 repositori contoh
-USERNAME = "maywho5454"
-REPO_LIST = [
-    "19oktober2025",
-    "20oktober2025",
-    "21oktober2025",
-    "22oktober2025",
-    "23oktober2025",
-    "24oktober2025",
-    "25oktober2025",
-    "26oktober2025",
-    "27oktober2025",
-    "28oktober2025",
-]
+#EXTINF:-1 group-logo="https://i.imgur.com/XXQ2pQ3.jpeg", ✅ KALAU GA ADA 
 
-# --- FUNGSI ---
-def clean_and_add_footer(content, tanggal):
-    """Hapus footer lama dan tambahkan footer baru sesuai tanggal."""
-    content = re.sub(r'#EXTM3U billed-msg=.*', '', content).strip()
-    footer = f'#EXTM3U billed-msg="😎{tanggal} | lynk.id/magelife😎"'
-    return f"{content}\n\n{footer}\n"
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/DUIDZUC.jpeg" group-title="✅ KALAU GA ADA ", Kalau ga ada chat admni
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-def main():
-    if not GITHUB_TOKEN:
-        print("❌ Environment variable GITHUB_PAT belum diatur.")
-        return
+#EXTINF:-1 group-logo="https://i.imgur.com/XXQ2pQ3.jpeg", ✅ CHAT ADMIN KAMU
 
-    # Ambil konten master
-    print("📥 Mengambil file sumber...")
-    r = requests.get(SOURCE_URL)
-    r.raise_for_status()
-    base_content = r.text
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/bxkCZST.jpeg" group-title="✅ CHAT ADMIN KAMU ", Kalau ga ada chat admni
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-    # Koneksi ke GitHub
-    g = Github(GITHUB_TOKEN)
+#EXTINF:-1 group-logo="https://i.imgur.com/bjfYe6g.jpegg", ✅ SILAHKAN RE ORDER
 
-    for repo_name in REPO_LIST:
-        tanggal = repo_name.replace(USERNAME+"/", "")  # "19oktober2025"
-        repo_fullname = f"{USERNAME}/{repo_name}"
-        print(f"\n🔄 Memproses: {repo_fullname}")
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/bjfYe6g.jpeg" group-title="✅ SILAHKAN RE ORDER", SILAHKAN RE ORDER
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-        try:
-            repo = g.get_repo(repo_fullname)
-        except Exception as e:
-            print(f"  ❌ Tidak bisa mengakses {repo_fullname}: {e}")
-            continue
+#EXTINF:-1 group-logo="https://i.imgur.com/bjfYe6g.jpegg", ✅SILAHKAN RE ORDER OM
 
-        # Buat konten baru
-        final_content = clean_and_add_footer(base_content, tanggal)
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/bjfYe6g.jpeg" group-title="✅ SILAHKAN RE ORDER OM", SILAHKAN RE ORDER
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-        try:
-            contents = repo.get_contents(TARGET_FILE, ref=BRANCH)
-            sha = contents.sha
-            old = contents.decoded_content.decode("utf-8")
-            if old.strip() == final_content.strip():
-                print("  ✅ Sudah versi terbaru, dilewati.")
-                continue
+#EXTINF:-1 group-logo="https://i.imgur.com/bjfYe6g.jpegg", ✅SILAHKAN RE ORDER TANTE
 
-            repo.update_file(
-                TARGET_FILE,
-                f"Auto update footer untuk {tanggal}",
-                final_content,
-                sha,
-                branch=main,
-            )
-            print("  ✅ Berhasil diperbarui.")
-        except Exception as e:
-            # Jika file belum ada
-            print("  ⚠️ File belum ada, mencoba membuat baru...")
-            try:
-                repo.create_file(
-                    TARGET_FILE,
-                    f"Auto create dengan footer {tanggal}",
-                    final_content,
-                    branch=main,
-                )
-                print("  ✅ File baru berhasil dibuat.")
-            except Exception as inner:
-                print(f"  ❌ Gagal membuat file: {inner}")
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/bjfYe6g.jpeg" group-title="✅SILAHKAN RE ORDER TANTE", SILAHKAN RE ORDER
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
 
-if __name__ == "__main__":
-    main()
+#EXTINF:-1 group-logo="https://i.imgur.com/bjfYe6g.jpegg", 📲 Wa 082219213334
+
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/bjfYe6g.jpeg" group-title="📲 Wa 082219213334", SILAHKAN RE ORDER
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
+
+#EXTINF:-1 group-logo="https://i.imgur.com/bjfYe6g.jpegg", 📲 Wa 082219213334 order
+
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/bjfYe6g.jpeg" group-title="📲 Wa 082219213334 order", SILAHKAN RE ORDER
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
+
+#EXTINF:-1 group-logo="https://i.imgur.com/PJ9tRpK.jpeg",✅ ORDER LYNK
+
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/PJ9tRpK.jpeg" group-title="✅ ORDER LYNK", ORDER LYNK
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
+
+#EXTINF:-1 group-logo="https://i.imgur.com/PJ9tRpK.jpeg",✅ https://lynk.id/magelife
+
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/PJ9tRpK.jpeg" group-title="✅ https://lynk.id/magelife", ORDER SHOPEE
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
+
+#EXTINF:-1 group-logo="https://i.imgur.com/PJ9tRpK.jpeg", ✅ORDER SHOPEE 
+
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/EWttwBZ.jpeg" group-title="✅ ORDER SHOPEE", ORDER LYNK
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
+
+#EXTINF:-1 group-logo="https://i.imgur.com/PJ9tRpK.jpeg", ✅ https://shorturl.at/1r9BB
+
+#EXTINF:-1 tvg-id="Iheart80s" tvg-name="Iheart80s" tvg-logo="https://i.imgur.com/EWttwBZ.jpeg" group-title="✅ https://shorturl.at/1r9BB", ORDER LYNK
+https://iheart-iheart80s-1-us.roku.wurl.tv/playlist.m3u8
+
+
+
+
+
+
+
+
+#EXTM3U billed-msg="😢CHAT ADMIN 082219213334| lynk.id/magelife😎"
